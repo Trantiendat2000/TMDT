@@ -1,3 +1,4 @@
+const http = require("http");
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -66,7 +67,9 @@ app.use("/admin", adminRoute);
 
 mongoose.set("strictQuery", true);
 
-// connect MONGODBdsd
+const server = http.createServer(app);
+
+// connect MONGODB
 mongoose
   .connect(process.env.MONGODB_URI)
   .then((result) => {
@@ -77,3 +80,5 @@ mongoose
     });
   })
   .catch((err) => console.log(err));
+
+module.exports = server;
