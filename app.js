@@ -73,8 +73,8 @@ const server = http.createServer(app);
 mongoose
   .connect(process.env.MONGODB_URI)
   .then((result) => {
-    const server = app.listen(process.env.PORT || 5000);
-    const io = require("./socket").init(server);
+    const serverIo = server.listen(process.env.PORT || 5000);
+    const io = require("./socket").init(serverIo);
     io.on("connection", (socket) => {
       console.log("Connected");
     });
