@@ -46,10 +46,7 @@ app.use(cors());
 app.use(express.json({ type: ["application/json"] }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, "access.log"),
-  { glags: "a" }
-);
+const accessLogStream = fs.createWriteStream("/tmp/access.log");
 
 app.use(helmet());
 app.use(compression());
