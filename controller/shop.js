@@ -194,7 +194,7 @@ exports.postEmail = async (req, res, next) => {
 
       sgMail
         .send(message)
-        .then((res) => {
+        .then((result) => {
           console.log("Email sent");
           req.user.clearCart();
           res.status(201).end();
