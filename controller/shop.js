@@ -197,6 +197,7 @@ exports.postEmail = async (req, res, next) => {
         .then((res) => {
           console.log("Email sent");
           req.user.clearCart();
+          res.status(201).end();
         })
         .catch((err) => console.log(err.message));
 
